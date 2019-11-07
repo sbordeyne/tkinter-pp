@@ -34,6 +34,16 @@ to create the bitmaps.
 
 The assets are available in the "assets" submodule. Use `import tkinterpp.assets` to import.
 
+You can also generate a bitmap object directly through the `Bitmap` class in this fashion:
+```python
+from tkinterpp import Bitmap
+bitmap = Bitmap()
+
+folder = bitmap.folder()  # folder bitmap object
+
+folder_yellow = bitmap.folder(fg='yellow')  # yellow folder bitmap object
+```
+
 # Create Tooltips
 
 A simple class to add tooltips to any tkinter widget. Simply create an instance of `CreateTooltip`, 

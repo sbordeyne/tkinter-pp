@@ -4,5 +4,6 @@ from .entries import EntrySelectFolder, EntryWithPlaceholder, KeybindingEntry
 from .frames import ScrolledCanvas
 from .notebooks import CloseableNotebook
 from .tooltip import CreateToolTip
+from .bitmaps import Bitmap
 
 from . import assets

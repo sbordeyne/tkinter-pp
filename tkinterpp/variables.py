@@ -1,30 +1,27 @@
 import datetime
 from copy import copy
 
+
 class DateVar:
-    def __init__(self, *args):
-        self.date = self._parse_args(*args)
+    def __init__(self, date=None):
+        self.date = self._parse_date(date)
         self.traces = {"read": [],
                        "write": [],
                        "unset": []}
 
-    def _parse_args(self, *args):
-        if not args:
-            return datetime.datetime.now()
-        if len(args) == 1 and isinstance(args[0], datetime.datetime):
-            return args[0]
-        else:
-            return datetime.datetime(*args)
+    @staticmethod
+    def _parse_date(date=None):
+        return date if date is not None else datetime.datetime.today()
 
     def get(self):
         for _, cb in self.traces["read"]:
             cb()
         return self.date
 
-    def set(self, *args):
+    def set(self, date=None):
         for _, cb in self.traces["write"]:
             cb()
-        self.date = self._parse_args(*args)
+        self.date = self._parse_date(date)
 
     def trace_add(self, mode, callback):
         """

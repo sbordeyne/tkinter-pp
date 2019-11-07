@@ -1,10 +1,8 @@
 try:
     import tkinter as tk
-    import tkinter.ttk as ttk
     import tkinter.filedialog as filedialog
 except ImportError:
     import Tkinter as tk
-    import ttk
     import Tkinter.tkFileDialog as filedialog
 
 
@@ -109,7 +107,7 @@ class Debounce:
 
         # for class bindings
         try:  # check if this class has alread had class bindings
-            cd = self._bind_class_dict[self.__class__.__name__]
+            self._bind_class_dict[self.__class__.__name__]
         except KeyError:  # create dict to store if not
             self._bind_class_dict[self.__class__.__name__] = {}
 

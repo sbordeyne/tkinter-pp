@@ -29,6 +29,12 @@ A dialogue box with a `tk.Entry` inside.
 
 # Assets included
 
-Some xbm bitmaps are available as well, in a string form. Use `tk.BitmapImage(data=..., mask_data=...)` to create the bitmaps.
+Some xbm bitmaps are available as well, in a string form. Use `tk.BitmapImage(data=..., mask_data=...)`
+to create the bitmaps.
 
 The assets are available in the "assets" submodule. Use `import tkinterpp.assets` to import.
+
+# Create Tooltips
+
+A simple class to add tooltips to any tkinter widget. Simply create an instance of `CreateTooltip`, 
+pass in the widget you want the tooltip to appear on, and the text of the tooltip

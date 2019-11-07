@@ -1,11 +1,7 @@
 try:
     import tkinter as tk
-    import tkinter.ttk as ttk
-    import tkinter.filedialog as filedialog
 except ImportError:
     import Tkinter as tk
-    import ttk
-    import Tkinter.tkFileDialog as filedialog
 
 
 class CreateToolTip(object):
@@ -35,14 +31,13 @@ class CreateToolTip(object):
         self.id = self.widget.after(self.waittime, self.showtip)
 
     def unschedule(self):
-        id = self.id
+        id_ = self.id
         self.id = None
-        if id:
-            self.widget.after_cancel(id)
+        if id_:
+            self.widget.after_cancel(id_)
 
     def showtip(self, event=None):
-        x = y = 0
-        x, y, cx, cy = self.widget.bbox("insert")
+        x, y, _, _ = self.widget.bbox("insert")
         x += self.widget.winfo_rootx() + 25
         y += self.widget.winfo_rooty() + 20
         # creates a toplevel window

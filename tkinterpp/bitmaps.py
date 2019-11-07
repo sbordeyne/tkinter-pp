@@ -1,8 +1,6 @@
 import tkinter as tk
-from .assets import *
+from . import assets
 
 
 def folder():
-    return tk.BitmapImage(data=folder, mask_data=folder_mask)
-
-
+    return tk.BitmapImage(data=assets.folder, mask_data=assets.folder_mask)

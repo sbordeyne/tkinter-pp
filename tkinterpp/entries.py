@@ -1,10 +1,8 @@
 try:
     import tkinter as tk
-    import tkinter.ttk as ttk
     import tkinter.filedialog as filedialog
 except ImportError:
     import Tkinter as tk
-    import ttk
     import Tkinter.tkFileDialog as filedialog
 
 from copy import copy
@@ -39,9 +37,11 @@ class EntryWithPlaceholder(tk.Entry):
 
 
 class KeybindingEntry(tk.Entry):
-    def __init__(self, master=None, current=[]):
+    def __init__(self, master=None, current=None):
         super().__init__(master)
 
+        if current is None:
+            current = []
         self.keys_pressed = copy(current)
         self.bind("<FocusIn>", self.on_focus_in)
         self.bind("<KeyPress>", self.on_key_pressed)
@@ -50,7 +50,6 @@ class KeybindingEntry(tk.Entry):
     def on_focus_in(self, event):
         self.keys_pressed = []
         self.update()
-        pass
 
     def on_key_pressed(self, event):
         keysym = self.format_keysym(event.keysym)
@@ -59,7 +58,8 @@ class KeybindingEntry(tk.Entry):
             self.update()
         return 'break'
 
-    def format_keysym(self, keysym):
+    @staticmethod
+    def format_keysym(keysym):
         keysym = keysym.capitalize()
         keysym = keysym.split("_")[0]
         return keysym

@@ -1,17 +1,17 @@
 # IDEAS for tkinter widgets
 
-## TableView :
+## TableView
 
 A treeview dedicated to displaying tables. With sorting based on the headers
 
-## FormFrame :
+## FormFrame
 
 A Frame dedicated to forms, with support for tk.Entry, ttk.Combobox, tk.Checkbutton, tk.Radiobutton
 
-## NodeView :
+## NodeView
 
 A Canvas-based widget to show a node graph, with events to bind to when a node is created, deleted, moved
 
-## Calendar:
+## Calendar
 
 A calendar, should return a datetime.datetime object.

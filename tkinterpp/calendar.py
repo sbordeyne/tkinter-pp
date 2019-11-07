@@ -12,7 +12,11 @@
 # Entry widget that pops the calendar out?
 # ISO 8061 date format. No plebs here with their MM/DD/YYYY
 
-import tkinter as tk
+try:
+    import tkinter as tk
+except ImportError:
+    import Tkinter as tk
+
 import datetime
 from .variables import DateVar
 from .assets import arrow_left, arrow_left_mask, arrow_right, arrow_right_mask

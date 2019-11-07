@@ -8,7 +8,7 @@ except ImportError:
     import Tkinter.tkFileDialog as filedialog
 
 
-class ScrolledFrame(tk.Frame):
+class ScrolledCanvas(tk.Frame):
     """
     1. Master widget gets scrollbars and a canvas. Scrollbars are connected
     to canvas scrollregion.

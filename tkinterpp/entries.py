@@ -8,6 +8,7 @@ except ImportError:
     import Tkinter.tkFileDialog as filedialog
 
 from copy import copy
+from .assets import folder, folder_mask
 
 
 class EntryWithPlaceholder(tk.Entry):
@@ -72,11 +73,12 @@ class EntrySelectFolder(tk.Frame):
     def __init__(self, master=None, title="Select a directory", path=None):
         super().__init__(master)
         self.ety = tk.Entry(self)
-        self.button_img = tk.BitmapImage("@assets/folder.xbm")
+        self.button_img = tk.BitmapImage(data=folder, mask_data=folder_mask)
         button = tk.Button(self, bitmap=self.button_img, command=self.on_btn_click)
 
         self.ety.bind("<Double-Button-1>", self.on_btn_click)
         self.path = path
+        self.title = title
         if path is not None:
             self.ety.delete(0, tk.END)
             self.ety.insert(tk.END, self.path)

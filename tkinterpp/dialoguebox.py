@@ -12,7 +12,7 @@ class DialogueEntry(tk.Toplevel):
     """
         DialogueEntry : tkinter.Toplevel
 
-        Dialgue box that allow the user to input a text in a field.
+        Dialogue box that allow the user to input a text in a field.
 
         kwargs :
             title : title of the dialogue box

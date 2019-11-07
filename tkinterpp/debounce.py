@@ -15,15 +15,16 @@ __all__ = [
     'DebounceFrame',
 ]
 
-class Debounce():
-    '''
+
+class Debounce:
+    """
     When holding a key down, multiple key press and key release events are fired in
     succession. Debouncing is implemented in order to squash these repeated events
     and know when the "real" KeyRelease and KeyPress events happen.
     Use by subclassing a tkinter widget along with this class:
         class DebounceTk(Debounce, tk.Tk):
             pass
-    '''
+    """
 
     # use classname as key to store class bindings
     # as single dict for all instances
@@ -34,39 +35,39 @@ class Debounce():
     _bind_all_dict = {}
 
     def bind(self, event, function, debounce=True):
-        '''
+        """
         Override the bind method, acts as normal binding if not KeyPress or KeyRelease
         type events, optional debounce parameter can be set to false to force normal behavior
-        '''
+        """
         self._debounce_init()
         self._debounce_bind(event, function, debounce,
                             self._binding_dict, self._base.bind)
 
     def bind_all(self, event, function, debounce=True):
-        '''
+        """
         Override the bind_all method, acts as normal binding if not KeyPress or KeyRelease
         type events, optional debounce parameter can be set to false to force normal behavior
-        '''
+        """
         self._debounce_init()
         self._debounce_bind(event, function, debounce,
                             self._bind_all_dict, self._base.bind_all)
 
     def bind_class(self, event, function, debounce=True):
-        '''
+        """
         Override the bind_class method, acts as normal binding if not KeyPress or KeyRelease
         type events, optional debounce parameter can be set to false to force normal behavior
         unlike underlying tk bind_class this uses name of class on which its called
         instead of requireing clas name as a parameter
-        '''
+        """
         self._debounce_init()
         self._debounce_bind(event, function, debounce,
                             self._bind_class_dict[self.__class__.__name__],
                             self._base.bind_class, self.__class__.__name__)
 
     def _debounce_bind(self, event, function, debounce, bind_dict, bind_method, *args):
-        '''
+        """
         internal method to implement binding
-        '''
+        """
         self._debounce_init()
         # remove special symbols and split at first hyphen if present
         ev = event.replace("<", "").replace(">", "").split('-', 1)
@@ -121,9 +122,9 @@ class Debounce():
         self.bindtags(tuple(bindtags))
 
     def _get_evdict(self, event):
-        '''
+        """
         internal method used to get the dictionaries that store the special binding info
-        '''
+        """
         dicts = []
         names = {'2': 'KeyPress', '3': 'KeyRelease'}
         # loop through all applicable bindings
@@ -146,10 +147,10 @@ class Debounce():
         return dicts
 
     def _on_key_release(self, event):
-        '''
+        """
         internal method, called by _on_key_release_repeat only when key is actually released
         this then calls the method that was passed in to the bind method
-        '''
+        """
         # get all binding details
         for d, evdict, generic in self._get_evdict(event):
             # call callback
@@ -166,9 +167,9 @@ class Debounce():
                 return 'break'
 
     def _on_key_release_repeat(self, event):
-        '''
+        """
         internal method, called by the 'KeyRelease' event, used to filter false events
-        '''
+        """
         # get all binding details
         for d, evdict, generic in self._get_evdict(event):
             if evdict["has_prev_key_release"]:
@@ -179,10 +180,10 @@ class Debounce():
             evdict["has_prev_key_release"] = self.after_idle(self._on_key_release, event)
 
     def _on_key_press(self, event):
-        '''
+        """
         internal method, called by _on_key_press_repeat only when key is actually pressed
         this then calls the method that was passed in to the bind method
-        '''
+        """
         # get all binding details
         for d, evdict, generic in self._get_evdict(event):
             # call callback
@@ -197,9 +198,9 @@ class Debounce():
                 return 'break'
 
     def _on_key_press_repeat(self, event):
-        '''
+        """
         internal method, called by the 'KeyPress' event, used to filter false events
-        '''
+        """
         # get binding details
         for d, evdict, generic in self._get_evdict(event):
             if not generic:
@@ -216,11 +217,14 @@ class Debounce():
                 if (event.keysym not in evdict) or (not evdict[event.keysym]):
                     self._on_key_press(event)
 
+
 class DebounceTk(Debounce, tk.Tk):
     pass
 
+
 class DebounceToplevel(Debounce, tk.Toplevel):
     pass
+
 
 class DebounceFrame(Debounce, tk.Frame):
     pass

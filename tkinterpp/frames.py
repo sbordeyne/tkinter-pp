@@ -8,7 +8,7 @@ except ImportError:
     import Tkinter.tkFileDialog as filedialog
 
 
-class ScrolledWindow(tk.Frame):
+class ScrolledFrame(tk.Frame):
     """
     1. Master widget gets scrollbars and a canvas. Scrollbars are connected
     to canvas scrollregion.
@@ -26,7 +26,6 @@ class ScrolledWindow(tk.Frame):
     canv_h - height of canvas
 
     """
-
 
     def __init__(self, parent, canv_w=400, canv_h=400, *args, **kwargs):
         """Parent = master of scrolled window

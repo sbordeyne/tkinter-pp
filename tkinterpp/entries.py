@@ -90,3 +90,15 @@ class EntrySelectFolder(tk.Frame):
         self.path = filedialog.askdirectory(title=self.title)
         self.ety.delete(0, tk.END)
         self.ety.insert(tk.END, self.path)
+
+
+class LabelEntry(tk.Frame):
+    def __init__(self, master=None, entry_widget=None, **kwargs):
+        super().__init__(master)
+        self.master = master
+        label_kwargs = {k[6:]: v for k, v in kwargs.items() if k.startswith("label_")}
+        entry_kwargs = {k[6:]: v for k, v in kwargs.items() if k.startswith("entry_")}
+        self.label = tk.Label(self, **label_kwargs)
+        self.entry = tk.Entry(self, **entry_kwargs) if entry_widget is None else entry_widget(self, **entry_kwargs)
+        self.label.grid(row=0, column=0)
+        self.entry.grid(row=0, column=1)

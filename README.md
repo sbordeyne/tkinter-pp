@@ -4,6 +4,8 @@ A collection of tkinter made widgets
 # Widgets included
 
 ## Calendar widget
+![Calendar Widget Screenshot](/images/calendar_widget.png)
+
 Displays a calendar so that the user can enter a date.
 
 ## CloseableNotebook widget
@@ -25,6 +27,11 @@ The path writes itself inside the entry.
 
 ## DialogueEntry
 A dialogue box with a `tk.Entry` inside.
+
+## LabelEntry
+A label and an entry packaged in one label. You can provide configure options for each of the label
+by prefacing the kwarg name with `label_` and `entry_`. You can supply any `Entry` widget, defaulting
+to `tk.Entry`.
 
 
 # Assets included

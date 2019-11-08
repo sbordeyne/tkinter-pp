@@ -44,7 +44,7 @@ You can add commands, cascades, or separators just like you would for a menu bar
 
 # Assets included
 
-Some xbm bitmaps are available as well, in a string form. Use `tk.BitmapImage(data=..., mask_data=...)`
+Some xbm bitmaps are available as well, in a string form. Use `tk.BitmapImage(data=..., maskdata=...)`
 to create the bitmaps.
 
 The assets are available in the "assets" submodule. Use `import tkinterpp.assets` to import.
@@ -58,6 +58,11 @@ folder = bitmap.folder()  # folder bitmap object
 
 folder_yellow = bitmap.folder(fg='yellow')  # yellow folder bitmap object
 ```
+
+# Custom Variables
+
+Custom variables like `DateVar`, used in the `Calendar` widget, are available through the `variables`
+submodule. Use `import tkinterpp.variables` to import.
 
 # Create Tooltips
 

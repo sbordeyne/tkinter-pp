@@ -2,6 +2,14 @@
 
 ## Generic
 
+### Toolbar
+
+A simple toolbar to display buttons or other widgets.
+
+### TextWithLineNumbers
+
+A text widget with line numbers showing on the left side.
+
 ### TableView
 
 A treeview dedicated to displaying tables. With sorting based on the headers
@@ -36,7 +44,7 @@ ISO 8061 date format. No plebs here with their MM/DD/YYYY
 
 https://docs.python.org/3.7/library/tkinter.tix.html
 
-### PopupMenu
+### PopupMenu - DONE
 
 A Menu that shows up on right click anywhere on the window.
 

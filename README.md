@@ -33,6 +33,14 @@ A label and an entry packaged in one label. You can provide configure options fo
 by prefacing the kwarg name with `label_` and `entry_`. You can supply any `Entry` widget, defaulting
 to `tk.Entry`.
 
+## PopupMenu
+![PopupMenu Widget Screenshot](/images/popup_menu_widget.png)
+
+A convenient class to create popup (contextual) menus easily. You can specify a list of callbacks
+for the menu to call when it's opened, using the `callbacks` keyword argument.
+
+You can add commands, cascades, or separators just like you would for a menu bar.
+
 
 # Assets included
 

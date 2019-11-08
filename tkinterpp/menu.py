@@ -4,8 +4,9 @@ import tkinter as tk
 class PopupMenu(tk.Menu):
     def __init__(self, *args, **kwargs):
         kwargs["tearoff"] = 0
-        super().__init__(*args, **kwargs)
         self.callbacks = kwargs.get("callbacks", [])
+        del kwargs["callbacks"]
+        super().__init__(*args, **kwargs)
         self.master.bind('<Button-3>', self.display_contextual)
 
     def display_contextual(self, event):

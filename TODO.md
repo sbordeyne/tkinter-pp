@@ -14,9 +14,23 @@ A Frame dedicated to forms, with support for tk.Entry, ttk.Combobox, tk.Checkbut
 
 A Canvas-based widget to show a node graph, with events to bind to when a node is created, deleted, moved
 
-### Calendar
-
+### Calendar - DONE
+```
 A calendar, should return a datetime.datetime object.
+TODO: Calendar should be a standalone widget, with a 7x5 grid
+grid should be in order: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+option to set Sun as first day of the week ?
+2 buttons, left/right to skip through the months like "< February >"
+same for year
+<   2019   >
+< February >
+M T W F S S
+      1 2 3
+4 5 6 7 8 9
+Fire events on month/day/year changes
+Entry widget that pops the calendar out?
+ISO 8061 date format. No plebs here with their MM/DD/YYYY
+```
 
 ## From tix
 

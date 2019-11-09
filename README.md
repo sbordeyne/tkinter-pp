@@ -18,12 +18,17 @@ it's through resizing, inserting content, scrolling etc.
 
 
 ## CloseableNotebook widget
+
+![Closeable_Notebook_Screenshot](/images/closeable_notebook_widget.png)
+
 A subclass of the `ttk.Notebook` widget, with a closing button, so the tab destroys itself.
 
 ## ScrolledCanvas widget 
 A `tk.Canvas` instance, which has scrollbars built-in to scroll the Canvas in any direction.
 
 ## EntryWithPlaceholder
+![Entry with Placeholder Screenshot](/images/entrywithplaceholder_widget.png)
+
 A `tk.Entry` which provides a greyed-out placeholder if nothing is written inside, and unfocused
 
 ## KeybindingEntry

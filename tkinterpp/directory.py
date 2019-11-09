@@ -8,6 +8,17 @@ from .bitmaps import Bitmap
 
 class DirTree(tk.Frame):
     def __init__(self, master=None, path=None, height=10, callbacks=None):
+        """
+        Constructor of the DirTree widget.
+
+        :param master: parent widget to this widget. None by default.
+        :param path: str or pathlib.Path object representing the directory to view.
+        :param height: height of the widget, in number of items to show.
+        :param callbacks: dictionnary of callbacks. Callbacks should be callable, and take a "path"
+                          argument, which is the full path of the file being double-clicked.
+                          The keys of the dictionnary should correspond to the first part of a mimetype,
+                          i.e. "audio" in "audio/ogg".
+        """
         super(DirTree, self).__init__(master)
         self.path = path
         self._name = ""
@@ -119,6 +130,11 @@ class DirTree(tk.Frame):
         self.tree.delete(*self.tree.get_children(''))
 
     def populate_roots(self):
+        """
+        Populates the treeview with the directory's files.
+
+        :return: None
+        """
         dir_ = os.path.abspath(self._path).replace('\\', '/')
         node = self.tree.insert('', 'end',
                                 text=self._name.capitalize(),

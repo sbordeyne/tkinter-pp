@@ -1,4 +1,5 @@
 import tkinter as tk
+from . import utils
 
 
 class Text(tk.Text):
@@ -58,18 +59,26 @@ class TextLineNumbers(tk.Canvas):
 
 
 class TextWithLineNumbers(tk.Frame):
-    def __init__(self, master=None, line_numbers_callbacks=None):
+    def __init__(self, master=None, line_numbers_callbacks=None, **text_kwargs):
+        """
+        Text widget with line numbers attached to it.
+        :param master: Parent widget.
+        :param line_numbers_callbacks: A list of callbacks that are triggered on every line number redraw.
+                                       Redraws happen every time the widget is changed or configured.
+                                       callbacks take an argument, which is the current line number being redrawn.
+        :param text_kwargs: keyword arguments that are passed straight to the underlying tkinter.Text widget.
+        """
         super().__init__(master)
         if line_numbers_callbacks is None:
             line_numbers_callbacks = []
         self.line_numbers_callbacks = line_numbers_callbacks
-        self.text = Text(self)
+        self.text = Text(self, **text_kwargs)
         self.vsb = tk.Scrollbar(self, orient="vertical",
                                 command=self.text.yview)
         self.hsb = tk.Scrollbar(self, orient="horizontal",
                                 command=self.text.xview)
-        self.text.configure(yscrollcommand=self.vsb.set,
-                            xscrollcommand=self.hsb.set,
+        self.text.configure(yscrollcommand=lambda f, l: utils.auto_scroll(self.vsb, f, l),
+                            xscrollcommand=lambda f, l: utils.auto_scroll(self.hsb, f, l),
                             wrap=tk.NONE,
                             undo=True)
         self.linenumbers = TextLineNumbers(self, width=30, callbacks=self.line_numbers_callbacks)

@@ -7,6 +7,9 @@ from .tooltip import CreateToolTip
 from .bitmaps import Bitmap
 from .calendar import Calendar
 from .menu import PopupMenu
+from .text import TextWithLineNumbers
+from .directory import DirTree
 
 from . import assets
 from . import variables
+from . import utils

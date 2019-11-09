@@ -8,6 +8,15 @@ A collection of tkinter made widgets
 
 Displays a calendar so that the user can enter a date.
 
+## TextWithLineNumbers widget
+
+![Text_With_Line_Numbers_Screenshot](/images/text_with_line_numbers_widget.png)
+
+Displays a text widget with an attached canvas, and scrollbars. The canvas shows the line numbers
+for the text widget. An event "<<Change>>" is fired whenever the text widget changes, whether
+it's through resizing, inserting content, scrolling etc.
+
+
 ## CloseableNotebook widget
 A subclass of the `ttk.Notebook` widget, with a closing button, so the tab destroys itself.
 
@@ -41,6 +50,11 @@ for the menu to call when it's opened, using the `callbacks` keyword argument.
 
 You can add commands, cascades, or separators just like you would for a menu bar.
 
+## DirTree
+
+![PopupMenu Widget Screenshot](/images/dirtree_widget.png)
+
+A widget that shows the desired directory, in a Treeview.
 
 # Assets included
 

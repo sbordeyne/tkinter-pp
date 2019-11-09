@@ -1,14 +1,14 @@
 # tkinter-pp
 A collection of tkinter made widgets
 
-# Widgets included
+## Widgets included
 
-## Calendar widget
+### Calendar widget
 ![Calendar Widget Screenshot](/images/calendar_widget.png)
 
 Displays a calendar so that the user can enter a date.
 
-## TextWithLineNumbers widget
+### TextWithLineNumbers widget
 
 ![Text_With_Line_Numbers_Screenshot](/images/text_with_line_numbers_widget.png)
 
@@ -17,37 +17,39 @@ for the text widget. An event "<<Change>>" is fired whenever the text widget cha
 it's through resizing, inserting content, scrolling etc.
 
 
-## CloseableNotebook widget
+### CloseableNotebook widget
 
 ![Closeable_Notebook_Screenshot](/images/closeable_notebook_widget.png)
 
 A subclass of the `ttk.Notebook` widget, with a closing button, so the tab destroys itself.
 
-## ScrolledCanvas widget 
+### ScrolledCanvas widget 
 A `tk.Canvas` instance, which has scrollbars built-in to scroll the Canvas in any direction.
 
-## EntryWithPlaceholder
+### EntryWithPlaceholder
 ![Entry with Placeholder Screenshot](/images/entrywithplaceholder_widget.png)
 
 A `tk.Entry` which provides a greyed-out placeholder if nothing is written inside, and unfocused
 
-## KeybindingEntry
+### KeybindingEntry
 A `tk.Entry` which reacts to key presses, so that you can record keybindings in a tkinter-friendly way.
 
-## EntrySelectFolder
+### EntrySelectFolder
 A `tk.Entry` which provides a button to select a folder using `tkinter.filedialog.askdirectory`.
 
 The path writes itself inside the entry.
 
-## DialogueEntry
+### DialogueEntry
+![Dialogue_Entry_Screenshot](/images/entry_dialoguebox.png)
+
 A dialogue box with a `tk.Entry` inside.
 
-## LabelEntry
+### LabelEntry
 A label and an entry packaged in one label. You can provide configure options for each of the label
 by prefacing the kwarg name with `label_` and `entry_`. You can supply any `Entry` widget, defaulting
 to `tk.Entry`.
 
-## PopupMenu
+### PopupMenu
 ![PopupMenu Widget Screenshot](/images/popup_menu_widget.png)
 
 A convenient class to create popup (contextual) menus easily. You can specify a list of callbacks
@@ -55,13 +57,13 @@ for the menu to call when it's opened, using the `callbacks` keyword argument.
 
 You can add commands, cascades, or separators just like you would for a menu bar.
 
-## DirTree
+### DirTree
 
 ![PopupMenu Widget Screenshot](/images/dirtree_widget.png)
 
 A widget that shows the desired directory, in a Treeview.
 
-# Assets included
+## Assets included
 
 ![Asset_Bitmaps Screenshot](/images/assets.png)
 
@@ -80,12 +82,12 @@ folder = bitmap.folder()  # folder bitmap object
 folder_yellow = bitmap.folder(fg='yellow')  # yellow folder bitmap object
 ```
 
-# Custom Variables
+## Custom Variables
 
 Custom variables like `DateVar`, used in the `Calendar` widget, are available through the `variables`
 submodule. Use `import tkinterpp.variables` to import.
 
-# Create Tooltips
+## Create Tooltips
 
 A simple class to add tooltips to any tkinter widget. Simply create an instance of `CreateTooltip`, 
 pass in the widget you want the tooltip to appear on, and the text of the tooltip

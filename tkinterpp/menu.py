@@ -1,4 +1,5 @@
 import tkinter as tk
+import _tkinter
 
 
 class PopupMenu(tk.Menu):
@@ -14,7 +15,7 @@ class PopupMenu(tk.Menu):
             callback(event)
         try:
             self.tk_popup(event.x_root, event.y_root, 0)
-        except Exception as e:
+        except _tkinter.TclError:
             pass
         finally:
             self.grab_release()

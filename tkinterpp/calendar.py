@@ -64,7 +64,6 @@ class Calendar(tk.Frame):
 
     def set_current_date(self, year=None, month=None, day=None):
         updater = {}
-        print(f"{year=}, {month=}, {day=}")
         if year is not None:
             updater["year"] = year
         if month is not None:
@@ -77,16 +76,13 @@ class Calendar(tk.Frame):
             updater["day"] = to_date_month_range[1]
 
         self.current_date = self.current_date.replace(**updater)
-        print(str(self.current_date))
         self.variable.set(self.current_date)
 
     def on_button_year_left(self):
-        print("button_year_left")
         self.set_current_date(self.current_date.year - 1, None, None)
         self.update_calendar()
 
     def on_button_year_right(self):
-        print("button_year_right")
         self.set_current_date(self.current_date.year + 1, None, None)
         self.update_calendar()
 

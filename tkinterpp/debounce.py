@@ -1,9 +1,7 @@
 try:
     import tkinter as tk
-    import tkinter.filedialog as filedialog
 except ImportError:
     import Tkinter as tk
-    import Tkinter.tkFileDialog as filedialog
 
 
 __all__ = [

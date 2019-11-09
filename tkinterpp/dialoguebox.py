@@ -1,9 +1,7 @@
 try:
     import tkinter as tk
-    import tkinter.ttk as ttk
 except ImportError:
     import Tkinter as tk
-    import ttk
 
 
 class DialogueEntry(tk.Toplevel):
@@ -73,12 +71,3 @@ class DialogueEntry(tk.Toplevel):
 
     def set(self, value):
         self.textvar.set(value)
-
-
-if __name__ == '__main__':
-    def open_entry():
-        DialogueEntry()
-    root = tk.Tk()
-    btn = tk.Button(root, text="open entry toplevel", command=open_entry)
-    btn.pack()
-    root.mainloop()

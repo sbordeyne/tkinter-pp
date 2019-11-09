@@ -123,7 +123,7 @@ class DirTree(tk.Frame):
     def sort_tree(self, node, col="type", reverse=False):
         items = [(self.tree.set(k, col), k) for k in self.tree.get_children(node)]
         items.sort(reverse=reverse)
-        for index, (val, k) in enumerate(items):
+        for index, (_, k) in enumerate(items):
             self.tree.move(k, node, index)
 
     def clear_tree(self):

@@ -10,9 +10,17 @@ class Bitmap:
     Check the assets documentation for a full list of assets.
     """
     def __init__(self):
+        self.dict = {}
         for name, value in [(n, v) for n, v in assets.__dict__.items() if
                             not n.startswith("__") and not n.endswith("_mask")]:
-            self.__dict__[name] = lambda **kwargs: tk.BitmapImage(data=value,
-                                                                  maskdata=assets.__dict__[name+"_mask"],
-                                                                  **kwargs)
+            f = lambda n=name, **kwargs: tk.BitmapImage(data=assets.__dict__[n],
+                                                        maskdata=assets.__dict__[n+"_mask"],
+                                                        **kwargs)
+            self.__dict__[name] = f
+            self.dict[name] = f
 
+    def __getitem__(self, item):
+        if item in self.dict.keys():
+            return self.dict[item]
+        else:
+            raise KeyError(f"No Bitmap matching {item} could be found.")

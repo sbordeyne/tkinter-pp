@@ -63,6 +63,8 @@ A widget that shows the desired directory, in a Treeview.
 
 # Assets included
 
+![Asset_Bitmaps Screenshot](/images/assets.png)
+
 Some xbm bitmaps are available as well, in a string form. Use `tk.BitmapImage(data=..., maskdata=...)`
 to create the bitmaps.
 

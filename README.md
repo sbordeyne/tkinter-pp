@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b74055d1db874c938b5b00b211c9bae1)](https://www.codacy.com/manual/Dogeek/tkinter-pp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Dogeek/tkinter-pp&amp;utm_campaign=Badge_Grade)
+
 # tkinter-pp
 A collection of tkinter made widgets
 

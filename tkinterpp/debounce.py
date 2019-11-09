@@ -198,7 +198,7 @@ class Debounce:
         internal method, called by the 'KeyPress' event, used to filter false events
         """
         # get binding details
-        for d, evdict, generic in self._get_evdict(event):
+        for _, evdict, generic in self._get_evdict(event):
             if not generic:
                 if evdict["has_prev_key_release"]:
                     # got a previous release so cancel it

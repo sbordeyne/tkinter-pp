@@ -60,11 +60,9 @@ class DialogueEntry(tk.Toplevel):
         if callable(self.ok_button_callback):
             self.ok_button_callback()
         self.on_cancel_btn()
-        pass
 
     def on_cancel_btn(self):
         self.destroy()
-        pass
 
     def get(self):
         return self.textvar.get()

@@ -18,7 +18,6 @@ Displays a text widget with an attached canvas, and scrollbars. The canvas shows
 for the text widget. An event "<<Change>>" is fired whenever the text widget changes, whether
 it's through resizing, inserting content, scrolling etc.
 
-
 ### CloseableNotebook widget
 
 ![Closeable_Notebook_Screenshot](/images/closeable_notebook_widget.png)

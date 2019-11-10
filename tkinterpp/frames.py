@@ -43,8 +43,8 @@ class ScrolledCanvas(tk.Frame):
         # creating a canvas
         self.canv = tk.Canvas(self.parent)
         self.canv.config(relief='flat',
-                         width=10,
-                         heigh=10, bd=2)
+                         width=canv_w,
+                         heigh=canv_h, bd=2)
         # placing a canvas into frame
         self.canv.grid(column=0, row=0, sticky='nsew')
         # accociating scrollbar comands to canvas scroling

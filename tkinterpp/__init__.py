@@ -9,6 +9,7 @@ from .calendar import Calendar
 from .menu import PopupMenu
 from .text import TextWithLineNumbers
 from .directory import DirTree
+from .node_view import NodeView
 
 from . import assets
 from . import variables

@@ -16,3 +16,8 @@ def auto_scroll(sbar, first, last):
         sbar.grid()
     sbar.set(first, last)
 
+
+def get_root_widget(widget):
+    while widget.master is not None:
+        widget = widget.master
+    return widget

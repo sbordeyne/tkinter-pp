@@ -4,6 +4,9 @@ try:
 except ImportError:
     import Tkinter as tk
     import ttk
+from PIL import Image, ImageTk
+
+from .utils import get_root_widget
 
 
 class ScrolledCanvas(tk.Frame):
@@ -87,3 +90,48 @@ class ScrolledCanvas(tk.Frame):
         if self.scrollwindow.winfo_reqheight() != self.canv.winfo_height():
             # update the canvas's width to fit the inner frame
             self.canv.config(height=self.scrollwindow.winfo_reqheight())
+
+
+class CanvasTransparency(tk.Canvas):
+    def __init__(self, **kwargs):
+        super(CanvasTransparency, self).__init__(**kwargs)
+        self._images = []
+        self._tags_ids = {"rectangle": 0,
+                          "oval": 0,
+                          "polygon": 0}
+
+    def create_rectangle(self, *args, **kwargs):
+        """
+        Superclass of Canvas.create_rectangle. Creates a rectangle on the canvas, with transparency support.
+        Supports all the arguments for the Canvas.create_rectangle method
+
+        :param alpha: float (0.0 <= a <= 1.0) representing the alpha of the filler.
+        :return: id of the rectangle
+        """
+        if len(args) == 1 and isinstance(args[0], (tuple, list)):
+            x1, y1, x2, y2 = args[0]
+        elif len(args) == 4:
+            x1, y1, x2, y2 = args
+        else:
+            raise ValueError("Incorrect number of arguments passed to function create_rectangle or CanvasTransparency")
+
+        tag = "alpharect{}".format(self._tags_ids["rectangle"])
+        self._tags_ids["rectangle"] += 1
+        tags = kwargs.get("tags", [])
+        tags += ["allaplharects", tag]
+
+        if 'alpha' in kwargs:
+            alpha = int(kwargs.pop('alpha') * 255)
+            fill = kwargs.pop('fill')
+            fill = get_root_widget(self).winfo_rgb(fill) + (alpha, )
+            image = Image.new('RGBA', (x2 - x1, y2 - y1), fill)
+            self._images.append(ImageTk.PhotoImage(image))
+            self.create_image(x1, y1, image=self._images[-1], anchor='nw', tags=tags)
+        super(CanvasTransparency, self).create_rectangle(x1, y1, x2, y2, **kwargs)
+        return tag
+
+    def create_oval(self, *args, **kwargs):
+        super(CanvasTransparency, self).create_oval(*args, **kwargs)
+
+    def create_polygon(self, *args, **kwargs):
+        super(CanvasTransparency, self).create_polygon(*args, **kwargs)

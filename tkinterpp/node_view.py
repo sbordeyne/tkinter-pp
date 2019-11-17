@@ -2,7 +2,7 @@ try:
     import tkinter as tk
 except ImportError:
     import Tkinter as tk
-from .frames import ScrolledCanvas
+from .canvases import ScrolledCanvas
 from .variables import NodeVar
 from collections import namedtuple
 import math

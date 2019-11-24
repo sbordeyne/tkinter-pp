@@ -2,7 +2,7 @@ from .debounce import Debounce, DebounceFrame, DebounceTk, DebounceToplevel
 from .dialoguebox import DialogueEntry
 from .entries import EntrySelectFolder, EntryWithPlaceholder, KeybindingEntry, LabelEntry
 from .canvases import ScrolledCanvas
-from .notebooks import CloseableNotebook
+from .notebooks import CloseableNotebook, DraggableNotebook
 from .tooltip import CreateToolTip
 from .bitmaps import Bitmap
 from .calendar import Calendar

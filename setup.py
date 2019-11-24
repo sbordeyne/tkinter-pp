@@ -10,7 +10,7 @@ setup(
   author = 'Dogeek',
   author_email = 'simon.bordeyne@gmail.com',
   url = 'https://github.com/Dogeek/tkinter-pp',
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/Dogeek/tkinter-pp/archive/v0.1.tar.gz',    # I explain this later on
   keywords = ['tkinter', 'addon'],
   install_requires=[
           'pillow',

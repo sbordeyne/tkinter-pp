@@ -142,7 +142,7 @@ class DraggableNotebook(ttk.Notebook):
             self.insert(f"@{event.x},{event.y}", self.identify(*self._mouse_button_1_pressed))
     
     def _create_toplevel(self, child, tabkw):
-        # TODO: Allow dragging the tabs to a new tkinter.Toplevel
+        # TODO: Allow dragging the tabs to a new tkinter.Toplevel. Use new move_widget function
         
         tl = tk.Toplevel(self)
         nb = DraggableNotebook(tl)

@@ -1,4 +1,6 @@
 import textwrap
+import string
+
 from tkinterpp.errors import I18NError
 
 
@@ -74,4 +76,93 @@ def get_i18n_dict(file_path):
             key = splits[1]
             value = splits[-2]
             rv[key] = value
+    return rv
+
+def get_widget_type(widget):
+    """
+    Gets the type of a given widget
+    
+    :param widget: widget to get the type of
+    :return: string of the type of the widget
+    """
+    class_ = widget.winfo_class()
+    if class_[0] == "T" and class_[1] in string.ascii_uppercase:
+        class_ = "ttk::" + class_[1:].lower()
+    else:
+        class_ = class_.lower()
+    return class_
+
+def get_widget_options(widget):
+    """
+    Gets the options from a widget
+    
+    :param widget: tkinter.Widget instance to get the config options from
+    :return: dict of options that you can pass on to widget.config()
+    """
+    return {
+        key: value for key, value in zip(widget.keys(), 
+                                         [widget.cget(k) for k in widget.keys()]
+                                         )
+            }
+
+
+def copy_widget(widget, new_parent, level=0):
+    """
+    Recursive function that copies a widget to a new parent.
+    
+    Ported to python from this tcl code :
+    https://stackoverflow.com/questions/6285648/can-you-change-a-widgets-parent-in-python-tkinter
+    
+    :param widget: widget to copy (tkinter.Widget instance)
+    :param new_parent: new widget to parent to.
+    :param level: (default: 0) current level of the recursive algorithm
+    
+    :return: tkinter.Widget instance, the copied widget.
+    """
+    rv = widget.__class__(master=new_parent, **get_widget_options(widget))
+    for b in widget.bind():
+        script = widget.bind(b)
+        #TODO: bind the script to the new widget (rv)
+        # set type [ getWidgetType $w ]
+        # set name [ string trimright $newparent.[lindex [split $w "." ] end ] "." ]  
+        # set retval [ $type $name {*}[ getConfigOptions $w ] ]
+        # foreach b [ bind $w ] {
+        #     puts "bind $retval $b [subst { [bind $w $b ] } ] " 
+        #     bind $retval $b  [subst { [bind $w $b ] } ]  
+        # } 
+    
+    if level > 0:
+        if widget.grid_info(): # if geometry manager is grid
+            temp = widget.grid_info()
+            del temp['in']
+            rv.grid(**temp)
+        elif widget.place_info(): # if geometry manager is place
+            temp = widget.place_info()
+            del temp['in']
+            rv.place(**temp)
+        else: # if geometry manager is pack
+            temp = widget.pack_info()
+            del temp['in']
+            rv.pack(**temp)
+    level += 1
+    if widget.pack_slaves(): # subwidgets are using the pack() geometry manager
+        for child in widget.pack_slaves():
+            copy_widget(child, rv, level)
+    else:
+        for child in widget.winfo_children():
+            copy_widget(child, rv, level)
+    return rv
+
+
+def move_widget(widget, new_parent):
+    """
+    Moves widget to new_parent
+    
+    :param widget: widget to move
+    :param new_parent: new parent for the widget
+    
+    :return: moved widget reference
+    """
+    rv = copy_widget(widget, new_parent)
+    widget.destroy()
     return rv

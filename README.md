@@ -3,6 +3,10 @@
 # tkinter-pp
 A collection of tkinter made widgets
 
+## Installation
+
+> pip install tkinterpp
+
 ## Widgets included
 
 ### Calendar widget
